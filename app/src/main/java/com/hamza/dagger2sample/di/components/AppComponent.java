@@ -6,6 +6,7 @@ import com.hamza.dagger2sample.app.BaseApplication;
 import com.hamza.dagger2sample.di.modules.ActivityBuilderModule;
 import com.hamza.dagger2sample.di.modules.AppModule;
 import com.hamza.dagger2sample.di.modules.ViewModelFactoryModule;
+import com.hamza.dagger2sample.utils.SessionManager;
 
 import javax.inject.Singleton;
 
@@ -23,8 +24,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
         }
 )
 public interface AppComponent extends AndroidInjector<BaseApplication> {
-
-
+    SessionManager getSessionManager();
     @Component.Builder
     interface Builder {
         @BindsInstance

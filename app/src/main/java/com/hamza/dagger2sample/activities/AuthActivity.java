@@ -70,8 +70,8 @@ public class AuthActivity extends DaggerAppCompatActivity {
                         }
                         case AUTHENTICATED: {
                             showProgressBar(false);
+                            Log.d(TAG, "onChanged: "+userApiResource.data.getEmail());
                             loginSuccess();
-                            //Log.d(TAG, "onChanged: "+userApiResource.data.getEmail());
                             break;
                         }
                         case NOT_AUTHENTICATED:

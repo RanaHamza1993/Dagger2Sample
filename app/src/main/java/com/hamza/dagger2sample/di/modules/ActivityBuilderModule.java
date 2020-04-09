@@ -1,6 +1,7 @@
 package com.hamza.dagger2sample.di.modules;
 
 import com.hamza.dagger2sample.activities.AuthActivity;
+import com.hamza.dagger2sample.activities.MainActivity;
 import com.hamza.dagger2sample.di.modules.auth.AuthModule;
 import com.hamza.dagger2sample.di.modules.auth.AuthViewModelModule;
 
@@ -16,6 +17,9 @@ public abstract class ActivityBuilderModule {
                     AuthModule.class
             })
     abstract AuthActivity contributeAuthActivity();
+
+    @ContributesAndroidInjector
+    abstract MainActivity contributeMainActivity();
 
 
 }

@@ -1,5 +1,6 @@
 package com.hamza.dagger2sample.activities;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -69,7 +70,8 @@ public class AuthActivity extends DaggerAppCompatActivity {
                         }
                         case AUTHENTICATED: {
                             showProgressBar(false);
-                            Log.d(TAG, "onChanged: "+userApiResource.data.getEmail());
+                            loginSuccess();
+                            //Log.d(TAG, "onChanged: "+userApiResource.data.getEmail());
                             break;
                         }
                         case NOT_AUTHENTICATED:
@@ -99,5 +101,10 @@ public class AuthActivity extends DaggerAppCompatActivity {
     private void showToast(String message){
         Toast.makeText(this,message,Toast.LENGTH_LONG).show();
 
+    }
+    private void loginSuccess(){
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

@@ -1,4 +1,4 @@
-package com.hamza.dagger2sample.di.modules;
+package com.hamza.dagger2sample.di.modules.auth;
 
 import androidx.lifecycle.ViewModel;
 

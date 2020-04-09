@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 
 import com.hamza.dagger2sample.R;
+import com.hamza.dagger2sample.fragments.ProfileFragment;
 
 public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
@@ -19,8 +20,12 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         showToast(TAG);
+      //  testFragment();
     }
 
+//    private void testFragment(){
+//        getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ProfileFragment()).commit();
+//    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -33,6 +38,7 @@ public class MainActivity extends BaseActivity {
         switch (item.getItemId()){
             case R.id.logout: {
                 sessionManager.logOut();
+                navAuthScreen();
                 return true;
             } default:
                 return super.onOptionsItemSelected(item);

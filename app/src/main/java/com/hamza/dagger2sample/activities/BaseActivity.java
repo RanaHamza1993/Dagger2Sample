@@ -53,7 +53,7 @@ public abstract class BaseActivity extends DaggerAppCompatActivity {
             }
         });
     }
-    private void navAuthScreen(){
+    protected void navAuthScreen(){
         Intent intent=new Intent(this,AuthActivity.class);
         startActivity(intent);
         finish();

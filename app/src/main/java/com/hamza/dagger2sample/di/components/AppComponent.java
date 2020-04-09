@@ -24,7 +24,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
         }
 )
 public interface AppComponent extends AndroidInjector<BaseApplication> {
-    SessionManager getSessionManager();
+    SessionManager sessionManager();
     @Component.Builder
     interface Builder {
         @BindsInstance

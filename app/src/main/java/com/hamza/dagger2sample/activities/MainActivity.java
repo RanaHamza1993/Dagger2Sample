@@ -3,6 +3,7 @@ package com.hamza.dagger2sample.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,6 +13,8 @@ import android.view.ViewGroup;
 
 import com.hamza.dagger2sample.R;
 import com.hamza.dagger2sample.fragments.ProfileFragment;
+
+import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";

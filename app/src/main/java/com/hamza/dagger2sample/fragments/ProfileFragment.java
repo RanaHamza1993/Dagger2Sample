@@ -1,5 +1,6 @@
 package com.hamza.dagger2sample.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -29,16 +30,18 @@ public class ProfileFragment extends DaggerFragment {
     private static final String TAG = "ProfileFragment";
     private ProfileViewModel viewModel;
     @Inject
+    Context context;
+    @Inject
     ViewModelProviderFactory factory;
     protected void showToast(String message){
-        Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show();
+        Toast.makeText(context,message,Toast.LENGTH_LONG).show();
 
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        //showToast(TAG);
+        showToast(TAG);
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 

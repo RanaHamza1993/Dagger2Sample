@@ -1,6 +1,7 @@
 package com.hamza.dagger2sample.di.modules;
 
 import android.app.Application;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 
 import androidx.core.content.ContextCompat;
@@ -49,5 +50,10 @@ public class AppModule {
     @Provides
     static Drawable provideDrawable(Application application){
         return ContextCompat.getDrawable(application,R.drawable.logo);
+    }
+    @Provides
+    @Singleton
+    Context provideContext(Application application) {
+        return application;
     }
 }

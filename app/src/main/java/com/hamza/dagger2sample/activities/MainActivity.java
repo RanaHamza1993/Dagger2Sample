@@ -19,13 +19,13 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        showToast(TAG);
-      //  testFragment();
+      //  showToast(TAG);
+        testFragment();
     }
 
-//    private void testFragment(){
-//        getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ProfileFragment()).commit();
-//    }
+    private void testFragment(){
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ProfileFragment()).commit();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

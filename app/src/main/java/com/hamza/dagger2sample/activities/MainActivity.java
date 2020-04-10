@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 
 import com.hamza.dagger2sample.R;
+import com.hamza.dagger2sample.app.BaseApplication;
+import com.hamza.dagger2sample.di.components.DaggerAppComponent;
 import com.hamza.dagger2sample.fragments.PostsFragment;
 import com.hamza.dagger2sample.fragments.ProfileFragment;
 

@@ -1,13 +1,16 @@
 package com.hamza.dagger2sample.di.components;
 
+import android.app.Activity;
 import android.app.Application;
 
+import com.hamza.dagger2sample.activities.MainActivity;
 import com.hamza.dagger2sample.app.BaseApplication;
 import com.hamza.dagger2sample.di.modules.ActivityBuilderModule;
 import com.hamza.dagger2sample.di.modules.AppModule;
 import com.hamza.dagger2sample.di.modules.ViewModelFactoryModule;
 import com.hamza.dagger2sample.utils.SessionManager;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.BindsInstance;

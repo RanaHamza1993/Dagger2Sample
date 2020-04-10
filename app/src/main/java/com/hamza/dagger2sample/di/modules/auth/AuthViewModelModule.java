@@ -12,6 +12,7 @@ import dagger.multibindings.IntoMap;
 @Module
 public abstract class AuthViewModelModule {
 
+    @AuthScope
     @Binds
     @IntoMap
     @ViewModelKey(AuthViewModel.class)

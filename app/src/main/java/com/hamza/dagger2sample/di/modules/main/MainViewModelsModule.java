@@ -12,13 +12,13 @@ import dagger.multibindings.IntoMap;
 
 @Module
 public abstract class MainViewModelsModule {
-
+    @MainScope
     @Binds
     @IntoMap
     @ViewModelKey(ProfileViewModel.class)
     public abstract ViewModel bindProfileViewModel(ProfileViewModel viewModel);
 
-
+    @MainScope
     @Binds
     @IntoMap
     @ViewModelKey(PostsViewModel.class)

@@ -9,14 +9,14 @@
     android:id="@+id/drawer_layout">
 
 
-<!--    <fragment-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:id="@+id/nav_host_fragment"-->
-<!--        android:name="androidx.navigation.fragment.NavHostFragment"-->
-<!--        app:defaultNavHost="true"-->
-<!--        app:navGraph="@navigation/main"-->
-<!--        />-->
+    <fragment
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/main"
+        />
 
 <FrameLayout
     android:id="@+id/frame"

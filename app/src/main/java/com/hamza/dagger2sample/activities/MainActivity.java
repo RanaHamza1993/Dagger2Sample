@@ -28,7 +28,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void testFragment(){
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ProfileFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame,new PostsFragment()).commit();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

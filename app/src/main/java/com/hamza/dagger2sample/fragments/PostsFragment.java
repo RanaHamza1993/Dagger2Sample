@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,10 +17,14 @@ import android.widget.TextView;
 
 import com.hamza.dagger2sample.R;
 import com.hamza.dagger2sample.databinding.FragmentProfileBinding;
+import com.hamza.dagger2sample.models.Post;
+import com.hamza.dagger2sample.utils.ApiResource;
 import com.hamza.dagger2sample.viewmodels.PostsViewModel;
 import com.hamza.dagger2sample.viewmodels.ViewModelProviderFactory;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -43,8 +48,17 @@ public class PostsFragment extends DaggerFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         Log.d(TAG, "onViewCreated: PostsFragment");
         viewModel = new ViewModelProvider(this, factory).get(PostsViewModel.class);
+        subscribeObservers();
     }
-
+    private void subscribeObservers() {
+        viewModel.observePosts().observe(getViewLifecycleOwner(), new Observer<ApiResource<List<Post>>>() {
+            @Override
+            public void onChanged(ApiResource<List<Post>> listApiResource) {
+                if(listApiResource!=null)
+                    Log.d(TAG, "onChanged: "+listApiResource.data);
+            }
+        });
+    }
     @Override
     public void onDestroy() {
         binding=null;

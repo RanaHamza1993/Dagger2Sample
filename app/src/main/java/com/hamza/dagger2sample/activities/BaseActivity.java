@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 
 import com.hamza.dagger2sample.models.User;
-import com.hamza.dagger2sample.utils.ApiResource;
+import com.hamza.dagger2sample.utils.AuthResource;
 import com.hamza.dagger2sample.utils.SessionManager;
 
 import javax.inject.Inject;
@@ -29,18 +29,18 @@ public abstract class BaseActivity extends DaggerAppCompatActivity {
 
     }
     protected void subscribeObservers(){
-        sessionManager.getAuthUser().observe(this, new Observer<ApiResource<User>>() {
+        sessionManager.getAuthUser().observe(this, new Observer<AuthResource<User>>() {
             @Override
-            public void onChanged(ApiResource<User> userApiResource) {
-                if (userApiResource != null) {
-                    switch (userApiResource.status) {
+            public void onChanged(AuthResource<User> userAuthResource) {
+                if (userAuthResource != null) {
+                    switch (userAuthResource.status) {
                         case ERROR:
                         case LOADING: {
                             break;
                         }
                         case AUTHENTICATED: {
 
-                            Log.d(TAG, "onChanged: "+userApiResource.data.getEmail());
+                            Log.d(TAG, "onChanged: "+ userAuthResource.data.getEmail());
                             break;
                         }
                         case NOT_AUTHENTICATED:

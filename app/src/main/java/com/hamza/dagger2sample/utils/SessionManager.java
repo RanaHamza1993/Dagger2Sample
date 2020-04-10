@@ -14,18 +14,18 @@ import javax.inject.Singleton;
 @Singleton
 public class SessionManager {
     private static final String TAG = "SessionManager";
-    private MediatorLiveData<ApiResource<User>> cachedUser=new MediatorLiveData<>();
+    private MediatorLiveData<AuthResource<User>> cachedUser=new MediatorLiveData<>();
     @Inject
     public SessionManager() {
     }
 
-    public void authenticateWithUserId(final LiveData<ApiResource<User>> source){
+    public void authenticateWithUserId(final LiveData<AuthResource<User>> source){
         if(cachedUser!=null){
-             cachedUser.setValue(ApiResource.loading(null));
-             cachedUser.addSource(source, new Observer<ApiResource<User>>() {
+             cachedUser.setValue(AuthResource.loading(null));
+             cachedUser.addSource(source, new Observer<AuthResource<User>>() {
                  @Override
-                 public void onChanged(ApiResource<User> userApiResource) {
-                     cachedUser.setValue(userApiResource);
+                 public void onChanged(AuthResource<User> userAuthResource) {
+                     cachedUser.setValue(userAuthResource);
                      cachedUser.removeSource(source);
                  }
              });
@@ -33,9 +33,9 @@ public class SessionManager {
     }
     public void logOut(){
         Log.d(TAG, "logOut: logging out...");
-        cachedUser.setValue(ApiResource.logout());
+        cachedUser.setValue(AuthResource.logout());
     }
-    public LiveData<ApiResource<User>> getAuthUser(){
+    public LiveData<AuthResource<User>> getAuthUser(){
         return cachedUser;
     }
 }

@@ -6,7 +6,7 @@ import androidx.annotation.Nullable;
 public class ApiResource<T> {
 
     @NonNull
-    public final AuthStatus status;
+    public final Status status;
 
     @Nullable
     public final T data;
@@ -15,28 +15,23 @@ public class ApiResource<T> {
     public final String message;
 
 
-    public ApiResource(@NonNull AuthStatus status, @Nullable T data, @Nullable String message) {
+    public ApiResource(@NonNull Status status, @Nullable T data, @Nullable String message) {
         this.status = status;
         this.data = data;
         this.message = message;
     }
 
-    public static <T> ApiResource<T> authenticated (@Nullable T data) {
-        return new ApiResource<>(AuthStatus.AUTHENTICATED, data, null);
+    public static <T> ApiResource<T> success (@Nullable T data) {
+        return new ApiResource<>(Status.SUCCESS, data, null);
     }
 
     public static <T> ApiResource<T> error(@NonNull String msg, @Nullable T data) {
-        return new ApiResource<>(AuthStatus.ERROR, data, msg);
+        return new ApiResource<>(Status.ERROR, data, msg);
     }
 
     public static <T> ApiResource<T> loading(@Nullable T data) {
-        return new ApiResource<>(AuthStatus.LOADING, data, null);
+        return new ApiResource<>(Status.LOADING, data, null);
     }
 
-    public static <T> ApiResource<T> logout () {
-        return new ApiResource<>(AuthStatus.NOT_AUTHENTICATED, null, null);
-    }
-
-    public enum AuthStatus { AUTHENTICATED, ERROR, LOADING, NOT_AUTHENTICATED}
-
+    public enum Status { SUCCESS, ERROR, LOADING}
 }

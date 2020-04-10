@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 
 import com.hamza.dagger2sample.R;
+import com.hamza.dagger2sample.fragments.PostsFragment;
 import com.hamza.dagger2sample.fragments.ProfileFragment;
 
 import javax.inject.Inject;

@@ -15,10 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.hamza.dagger2sample.R;
 import com.hamza.dagger2sample.databinding.FragmentProfileBinding;
 import com.hamza.dagger2sample.models.User;
-import com.hamza.dagger2sample.utils.ApiResource;
+import com.hamza.dagger2sample.utils.AuthResource;
 import com.hamza.dagger2sample.viewmodels.ProfileViewModel;
 import com.hamza.dagger2sample.viewmodels.ViewModelProviderFactory;
 
@@ -63,17 +62,17 @@ public class ProfileFragment extends DaggerFragment {
 
     private void subscribeObservers() {
         viewModel.getAuthenticatedUser().removeObservers(getViewLifecycleOwner());
-        viewModel.getAuthenticatedUser().observe(getViewLifecycleOwner(), new Observer<ApiResource<User>>() {
+        viewModel.getAuthenticatedUser().observe(getViewLifecycleOwner(), new Observer<AuthResource<User>>() {
             @Override
-            public void onChanged(ApiResource<User> userApiResource) {
-                if (userApiResource != null) {
-                    switch (userApiResource.status) {
+            public void onChanged(AuthResource<User> userAuthResource) {
+                if (userAuthResource != null) {
+                    switch (userAuthResource.status) {
                         case AUTHENTICATED: {
-                            setUserDetails(userApiResource.data);
+                            setUserDetails(userAuthResource.data);
                             break;
                         }
                         case ERROR: {
-                            setErrorDetails(userApiResource.message);
+                            setErrorDetails(userAuthResource.message);
                             break;
                         }
                     }

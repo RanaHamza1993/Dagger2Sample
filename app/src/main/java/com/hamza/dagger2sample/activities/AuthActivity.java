@@ -12,10 +12,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.RequestManager;
-import com.hamza.dagger2sample.R;
 import com.hamza.dagger2sample.databinding.ActivityAuthBinding;
 import com.hamza.dagger2sample.models.User;
-import com.hamza.dagger2sample.utils.ApiResource;
+import com.hamza.dagger2sample.utils.AuthResource;
 import com.hamza.dagger2sample.viewmodels.AuthViewModel;
 import com.hamza.dagger2sample.viewmodels.ViewModelProviderFactory;
 
@@ -59,25 +58,25 @@ public class AuthActivity extends DaggerAppCompatActivity {
     }
 
     private void subscribeObservers() {
-        viewModel.observeAuthUserState().observe(this, new Observer<ApiResource<User>>() {
+        viewModel.observeAuthUserState().observe(this, new Observer<AuthResource<User>>() {
             @Override
-            public void onChanged(ApiResource<User> userApiResource) {
-                if (userApiResource != null) {
-                    switch (userApiResource.status) {
+            public void onChanged(AuthResource<User> userAuthResource) {
+                if (userAuthResource != null) {
+                    switch (userAuthResource.status) {
                         case LOADING: {
                             showProgressBar(true);
                             break;
                         }
                         case AUTHENTICATED: {
                             showProgressBar(false);
-                            Log.d(TAG, "onChanged: "+userApiResource.data.getEmail());
+                            Log.d(TAG, "onChanged: "+ userAuthResource.data.getEmail());
                             loginSuccess();
                             break;
                         }
                         case NOT_AUTHENTICATED:
                         case ERROR: {
                             showProgressBar(false);
-                            showToast(userApiResource.message);
+                            showToast(userAuthResource.message);
                             break;
                         }
                     }

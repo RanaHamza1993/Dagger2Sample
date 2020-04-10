@@ -5,6 +5,7 @@ import com.hamza.dagger2sample.activities.MainActivity;
 import com.hamza.dagger2sample.di.modules.auth.AuthModule;
 import com.hamza.dagger2sample.di.modules.auth.AuthViewModelModule;
 import com.hamza.dagger2sample.di.modules.main.MainFragmentsBuilderModile;
+import com.hamza.dagger2sample.di.modules.main.MainModule;
 import com.hamza.dagger2sample.di.modules.main.MainViewModelsModule;
 import com.hamza.dagger2sample.fragments.ProfileFragment;
 
@@ -24,6 +25,7 @@ public abstract class ActivityBuilderModule {
     @ContributesAndroidInjector(
             modules = {
                     MainFragmentsBuilderModile.class,
+                    MainModule.class,
                     MainViewModelsModule.class}
     )
     abstract MainActivity contributeMainActivity();
